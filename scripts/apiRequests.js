@@ -133,3 +133,42 @@ export const login = async (body) => {
   }
 }
 
+export const getAllDepartments = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+
+  try{
+
+    const responseJson = await fetch(`${baseUrl}/departments`, options)
+    const response = await responseJson.json()
+    
+    return response
+
+  }catch(err){
+    console.log(err)
+  }
+}
+
+export const getDepartmentsFromCompany = async (token, id) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+
+  try{
+
+    const responseJson = await fetch(`${baseUrl}/departments/${id}`, options)
+    const response = await responseJson.json()
+    
+    return response
+
+  }catch(err){
+    console.log(err)
+  }
+}

@@ -27,3 +27,10 @@
   font-weight: 400;
   color: var(--color-grey-200);
 }
+
+.select-companies {
+  background-color: var(--color-white);
+  padding:0.5rem;
+  border-radius: var(--radius-4);
+  cursor: pointer;
+}

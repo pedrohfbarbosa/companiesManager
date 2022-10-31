@@ -1,0 +1,17 @@
+.card-dash {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-white);
+  height: 12.5rem;
+  width: 100%;
+  max-width: 30.5rem;
+  padding: 1rem;
+  flex-shrink: 0;
+}
+
+.btns-card {
+  display: flex;
+  gap: 0.25rem;
+  align-self: center;
+}

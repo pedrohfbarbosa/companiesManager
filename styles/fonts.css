@@ -33,5 +33,8 @@
   font-weight: 400;
 } 
 
-
+.title-dash {
+  font-size: var(--font-size-2);
+  font-weight: 700;
+}
 
