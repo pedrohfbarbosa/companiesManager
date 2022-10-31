@@ -1,0 +1,51 @@
+body {
+  background-image: url(../../assets/img/register.png);
+  background-position-x: center;
+  background-repeat: no-repeat;  
+  height: 100vh;
+}
+
+.main-content {
+  height: 85%;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  background-color: var(--color-grey-400);
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  height: 32.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+main .btn-default {
+  max-width: 100%;
+}
+
+@media (min-width: 1400px) {
+  body {
+    background-size: cover;
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    background-size: cover;
+  }
+
+  main .btn-default {
+    width: 100%;
+  }
+  
+}

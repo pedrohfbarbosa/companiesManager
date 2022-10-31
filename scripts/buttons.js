@@ -1,11 +1,30 @@
 export const buttonOpenHeader = () => {
-  document.getElementById("go-to-login").addEventListener("click", () => {
-    window.location.replace("../login/index.html")
-  })
+  const goToLogin = [...document.querySelectorAll(".go-to-login")]
+  if (goToLogin){
+    goToLogin.forEach(e => {
+      e.addEventListener("click", () => {
+        window.location.replace("../login/index.html")
+      })
+    })
+  }
 
-  document.getElementById("go-to-register").addEventListener("click", () => {
-    window.location.replace("../register/index.html")
-  })
+  const goToRegister = [...document.querySelectorAll(".go-to-register")]
+  if(goToRegister){
+    goToRegister.forEach(e => {
+      e.addEventListener("click", () => {
+        window.location.replace("../register/index.html")
+      })
+    })
+  }
+
+  const goToHome = [...document.querySelectorAll(".go-to-home")]
+  if (goToHome){
+    goToHome.forEach(e => {
+      e.addEventListener("click", () => {
+        window.location.replace("../home/index.html")
+      })
+    })
+  }
 
   const btnOpenHeader = document.getElementById("btn-open-header")
 
