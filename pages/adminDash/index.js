@@ -1,7 +1,7 @@
 import { getAllDepartments } from "../../scripts/apiRequests.js";
 import { buttonsListener } from "../../scripts/buttons.js";
 import { security } from "../../scripts/security.js";
-import { renderCompaniesSelect, renderDepartments } from "../../scripts/renderCompaniesDash.js"
+import { renderCompaniesSelect, renderDepartments } from "../../scripts/renderDepartmentsDash.js"
 
 security()
 
