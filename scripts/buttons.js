@@ -1,4 +1,4 @@
-export const buttonOpenHeader = () => {
+export const buttonsListener = () => {
   const goToLogin = [...document.querySelectorAll(".go-to-login")]
   if (goToLogin){
     goToLogin.forEach(e => {
@@ -26,14 +26,28 @@ export const buttonOpenHeader = () => {
     })
   }
 
+  const logoutBtns = [...document.querySelectorAll(".btn-logout")]
+  if (logoutBtns) {
+    logoutBtns.forEach(e => {
+      e.addEventListener("click", () => {
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
+
+        window.location.replace("../home/index.html")
+      })
+    })
+  }
+
   const btnOpenHeader = document.getElementById("btn-open-header")
+  if(btnOpenHeader){
+    btnOpenHeader.addEventListener("click", () => {
+      const buttonsNav = document.querySelector(".btns-header")
+      const header = document.querySelector("header")
+  
+      buttonsNav.classList.toggle("show")
+      btnOpenHeader.classList.toggle("btn-close-header")
+      header.classList.toggle("border-none")
+    })
+  }
 
-  btnOpenHeader.addEventListener("click", () => {
-    const buttonsNav = document.querySelector(".btns-header")
-    const header = document.querySelector("header")
-
-    buttonsNav.classList.toggle("show")
-    btnOpenHeader.classList.toggle("btn-close-header")
-    header.classList.toggle("border-none")
-  })
 }

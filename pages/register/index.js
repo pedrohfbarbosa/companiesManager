@@ -1,3 +1,6 @@
-import { buttonOpenHeader } from "../../scripts/buttons.js";
+import { buttonsListener } from "../../scripts/buttons.js";
+import { formRegister } from "../../scripts/formRegister.js";
 
-buttonOpenHeader()
+buttonsListener()
+
+formRegister()
