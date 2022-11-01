@@ -1,4 +1,6 @@
 import { getAllCompanies, getAllDepartments, getDepartmentsFromCompany } from "./apiRequests.js"
+import { modalDeleteDepartment } from "./modalDeleteDepartment.js"
+import { modalEditDepartment } from "./modalEditDepartment.js"
 import { modalViewDepartment } from "./modalViewDepartment.js"
 
 export const renderDepartments = async (departments) => {
@@ -31,9 +33,15 @@ export const renderDepartments = async (departments) => {
 
     const btnEdit = document.createElement("button")
     btnEdit.className = "btn-card-main btn-edit"
+    btnEdit.addEventListener("click", async () => {
+      await modalEditDepartment(e)
+    })
 
     const btnDelete = document.createElement("button")
     btnDelete.className = "btn-card-main btn-delete"
+    btnDelete.addEventListener("click", async () => {
+      await modalDeleteDepartment(e)
+    })
 
     divBtns.append(btnView, btnEdit, btnDelete)
 

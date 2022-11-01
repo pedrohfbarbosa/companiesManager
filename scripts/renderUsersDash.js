@@ -1,4 +1,6 @@
 import { getAllDepartments, getAllUsers } from "./apiRequests.js";
+import { modalDeleteUser } from "./modalDeleteUserAdminDash.js";
+import { modalEditUser } from "./modalEditUserAdminDash.js";
 
 export const renderAllUsers = async () => {
   const usersWrapper = document.querySelector(".users-wrapper")
@@ -39,9 +41,15 @@ export const renderAllUsers = async () => {
 
     const btnEdit = document.createElement("button")
     btnEdit.className = "btn-card-main btn-edit"
+    btnEdit.addEventListener("click", () => {
+      modalEditUser(e)
+    })
 
     const btnDelete = document.createElement("button")
     btnDelete.className = "btn-card-main btn-delete"
+    btnDelete.addEventListener("click", () => {
+      modalDeleteUser(e)
+    })
 
     divBtns.append(btnEdit, btnDelete)
 

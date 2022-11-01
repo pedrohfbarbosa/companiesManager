@@ -2,42 +2,42 @@ const baseUrl = "http://localhost:6278"
 
 export const getSectors = async () => {
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/sectors`)
     const response = await responseJson.json()
 
     return response.map(e => e.description)
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
 
 export const getAllCompanies = async () => {
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/companies`)
     const response = await responseJson.json()
 
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
 
 export const getCompaniesBySector = async (sector) => {
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/companies/${sector}`)
     const response = await responseJson.json()
 
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -52,29 +52,29 @@ export const register = async (body) => {
     body: JSON.stringify(body)
   }
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/auth/register`, options)
     const response = await responseJson.json()
-    
-    if(responseJson.ok){
+
+    if (responseJson.ok) {
 
       setTimeout(() => {
 
         window.location.replace("../login/index.html")
-        
+
       }, 4000);
 
-      
-    }else if (response.error[0].includes("email")){
+
+    } else if (response.error[0].includes("email")) {
       console.log("Email já existe")
-    }else {
+    } else {
       console.log("Algo deu errado, verifique sua conexão com a internet")
     }
 
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -93,7 +93,7 @@ export const validateUser = async (token) => {
     const response = await responseJson.json()
 
     return response.is_admin
-  }catch (err) {
+  } catch (err) {
     console.log(err)
   }
 }
@@ -107,28 +107,28 @@ export const login = async (body) => {
     body: JSON.stringify(body)
   }
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/auth/login`, options)
     const response = await responseJson.json()
-    
-    if(responseJson.ok){
+
+    if (responseJson.ok) {
 
       localStorage.setItem("token", response.token)
 
-      if (await validateUser(response.token)){
+      if (await validateUser(response.token)) {
         window.location.replace("../adminDash/index.html")
-      }else {
+      } else {
         window.location.replace("../userDash/index.html")
       }
-      
-    }else{
+
+    } else {
       console.log("email ou senha inválidos")
     }
 
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -141,14 +141,14 @@ export const getAllDepartments = async (token) => {
     }
   }
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/departments`, options)
     const response = await responseJson.json()
-    
+
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -161,14 +161,14 @@ export const getDepartmentsFromCompany = async (token, id) => {
     }
   }
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/departments/${id}`, options)
     const response = await responseJson.json()
-    
+
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -181,14 +181,14 @@ export const getAllUsers = async (token) => {
     }
   }
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/users`, options)
     const response = await responseJson.json()
-    
+
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -201,14 +201,14 @@ export const allUnemployed = async (token) => {
     }
   }
 
-  try{
+  try {
 
     const responseJson = await fetch(`${baseUrl}/admin/out_of_work`, options)
     const response = await responseJson.json()
-    
+
     return response
 
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -217,8 +217,8 @@ export const hireEmployee = async (body, token) => {
   const options = {
     method: "PATCH",
     headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(body)
   }
@@ -228,7 +228,7 @@ export const hireEmployee = async (body, token) => {
     const response = await responseJson.json()
 
     return response
-  }catch(err){
+  } catch (err) {
     console.log(err)
   }
 }
@@ -237,16 +237,115 @@ export const fireEmployee = async (token, id) => {
   const options = {
     method: "PATCH",
     headers: {
-    "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     }
   }
 
   try {
     const responseJson = await fetch(`${baseUrl}/departments/dismiss/${id}`, options)
     const response = await responseJson.json()
-    
+
     return response
-  }catch(err){
+  } catch (err) {
     console.log(err)
+  }
+}
+
+export const createDepartmentRequest = async (token, body) => {
+  const options = {
+    method: "POST",
+    headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/departments`, options)
+    const response = await responseJson.json()
+
+    return response
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const editDepartment = async (token, id, body) => {
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/departments/${id}`, options)
+    const response = await responseJson.json()
+
+    return response
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const deleteDepartment = async (token, id) => {
+  const options = {
+  method: "DELETE",
+  headers: {
+    "Authorization": `Bearer ${token}`
+  },
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/departments/${id}`, options)
+    const response = await responseJson.json()
+
+    return response
+
+  } catch (err) {
+    
+  }
+}
+
+export const editUserAdminDash = async (token, id, body) => {
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/admin/update_user/${id}`, options)
+    const response = await responseJson.json()
+
+    return response
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const deleteUser = async (token, id) => {
+  const options = {
+  method: "DELETE",
+  headers: {
+    "Authorization": `Bearer ${token}`
+  },
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/admin/delete_user/${id}`, options)
+    const response = await responseJson.json()
+
+    return response
+
+  } catch (err) {
+    
   }
 }
