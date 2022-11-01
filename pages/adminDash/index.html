@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../styles/headerDash.css">
   <link rel="stylesheet" href="../../styles/inputs.css">
   <link rel="stylesheet" href="../../styles/cardDash.css">
+  <link rel="stylesheet" href="../../styles/modal.css">
   <link rel="stylesheet" href="./index.css">
   <title>Dashboard-Admin</title>
 </head>
@@ -57,7 +58,7 @@
         </button>
       </div>
 
-      <ul class="departments-wrapper"> 
+      <ul class="departments-wrapper">
       </ul>
     </section>
 
@@ -67,25 +68,62 @@
       </h2>
 
       <ul class="users-wrapper">
-        <li class="card-dash">
-          <h3 class="title-2">
+      </ul>
+    </section>
+
+  </main>
+  
+<!--   <div class="modal-wrapper">
+    <div class="modal">
+      <button class="btn-close-modal">
+      </button>
+
+      <h2 class="title-dash">
+        Nome do departamento
+      </h2>
+
+      <div class="modal-header">
+
+        <div>
+          <p class="title-2">
+            Descrição do departamento
+          </p>
+          <span class="text-3">
+            Empresa pertencente
+          </span>
+        </div>
+
+        <form id="form-users">
+          <select class="text-3 color-grey-200" name="select-users" id="select-users" form="form-users">
+            <option value="">Selecionar usuário</option>
+          </select>
+
+          <button class="btn-default bg-color-feedback-success color-white text-2 border-none" type="submit">
+            Contratar
+          </button>
+        </form>
+
+      </div>    
+
+      <ul class="department-employees">
+        <li class="card-employee">
+          <h4 class="title-2">
             Username
-          </h3>
+          </h4>
           <p class="text-3">
             Pleno
           </p>
           <span class="text-3">
             Company Name
           </span>
-          <div class="btns-card">
-            <button class="btn-card-main btn-edit"></button>
-            <button class="btn-card-main btn-delete"></button>
-          </div>
+          <button class="btn-default color-feedback-alert text-2 bg-color-white">
+            Desligar
+          </button>
         </li>
       </ul>
-    </section>
 
-  </main>
+    </div>
+  </div> -->
   <script type="module" src="./index.js"></script>
 </body>
 

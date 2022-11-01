@@ -1,4 +1,5 @@
 import { getAllCompanies, getAllDepartments, getDepartmentsFromCompany } from "./apiRequests.js"
+import { modalViewDepartment } from "./modalViewDepartment.js"
 
 export const renderDepartments = async (departments) => {
   const departmentsWrapper = document.querySelector(".departments-wrapper")
@@ -24,6 +25,9 @@ export const renderDepartments = async (departments) => {
 
     const btnView = document.createElement("button")
     btnView.className = "btn-card-main btn-view"
+    btnView.addEventListener("click", async () => {
+      await modalViewDepartment(e)
+    })
 
     const btnEdit = document.createElement("button")
     btnEdit.className = "btn-card-main btn-edit"

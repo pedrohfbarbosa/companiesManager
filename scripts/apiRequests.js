@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:6278'
+const baseUrl = "http://localhost:6278"
 
 export const getSectors = async () => {
 
@@ -168,6 +168,84 @@ export const getDepartmentsFromCompany = async (token, id) => {
     
     return response
 
+  }catch(err){
+    console.log(err)
+  }
+}
+
+export const getAllUsers = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+
+  try{
+
+    const responseJson = await fetch(`${baseUrl}/users`, options)
+    const response = await responseJson.json()
+    
+    return response
+
+  }catch(err){
+    console.log(err)
+  }
+}
+
+export const allUnemployed = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+
+  try{
+
+    const responseJson = await fetch(`${baseUrl}/admin/out_of_work`, options)
+    const response = await responseJson.json()
+    
+    return response
+
+  }catch(err){
+    console.log(err)
+  }
+}
+
+export const hireEmployee = async (body, token) => {
+  const options = {
+    method: "PATCH",
+    headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/departments/hire`, options)
+    const response = await responseJson.json()
+
+    return response
+  }catch(err){
+    console.log(err)
+  }
+}
+
+export const fireEmployee = async (token, id) => {
+  const options = {
+    method: "PATCH",
+    headers: {
+    "Authorization": `Bearer ${token}`
+    }
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/departments/dismiss/${id}`, options)
+    const response = await responseJson.json()
+    
+    return response
   }catch(err){
     console.log(err)
   }

@@ -1,0 +1,86 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-black-opacity);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modal {
+  background-color: var(--color-white);
+  width: 100%;
+  max-width: 53rem;
+  min-height: 40rem;
+  padding: 1rem;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-header div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal-header form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.department-employees {
+  background-color: var(--color-grey-400);
+  height: 18.125rem;
+  overflow-x: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card-employee {
+  height: 12.25rem;
+  width: 19.125rem;
+  background-color: var(--color-white);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.card-employee button {
+  border-color: var(--color-feedback-alert);
+  align-self: center;
+}
+
+@media (min-width: 900px) {
+  .modal-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #select-users {
+    width: 26rem;
+  }
+
+  .modal-header form button {
+    align-self: flex-end;
+  }
+}
