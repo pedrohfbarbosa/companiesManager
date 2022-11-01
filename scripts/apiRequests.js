@@ -98,6 +98,25 @@ export const validateUser = async (token) => {
   }
 }
 
+export const getUserInfo = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/users/profile`, options)
+    const response = await responseJson.json()
+
+    return response
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 export const login = async (body) => {
   const options = {
     method: "POST",
@@ -119,6 +138,8 @@ export const login = async (body) => {
       if (await validateUser(response.token)) {
         window.location.replace("../adminDash/index.html")
       } else {
+        const userInfo = await getUserInfo(response.token)
+        localStorage.setItem("user", JSON.stringify(userInfo))
         window.location.replace("../userDash/index.html")
       }
 
@@ -255,8 +276,8 @@ export const createDepartmentRequest = async (token, body) => {
   const options = {
     method: "POST",
     headers: {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${token}`
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(body)
   }
@@ -294,10 +315,10 @@ export const editDepartment = async (token, id, body) => {
 
 export const deleteDepartment = async (token, id) => {
   const options = {
-  method: "DELETE",
-  headers: {
-    "Authorization": `Bearer ${token}`
-  },
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
   }
 
   try {
@@ -307,7 +328,7 @@ export const deleteDepartment = async (token, id) => {
     return response
 
   } catch (err) {
-    
+
   }
 }
 
@@ -333,10 +354,10 @@ export const editUserAdminDash = async (token, id, body) => {
 
 export const deleteUser = async (token, id) => {
   const options = {
-  method: "DELETE",
-  headers: {
-    "Authorization": `Bearer ${token}`
-  },
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
   }
 
   try {
@@ -346,6 +367,44 @@ export const deleteUser = async (token, id) => {
     return response
 
   } catch (err) {
-    
+    console.log(err)
+  }
+}
+
+export const getDepartmentUser = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/users/departments`, options)
+    const response = await responseJson.json()
+
+    return response
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export const getCoWorkers = async (token) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/users/departments/coworkers`, options)
+    const response = await responseJson.json()
+
+    return response
+
+  } catch (err) {
+    console.log(err)
   }
 }
