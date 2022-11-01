@@ -1,4 +1,5 @@
 import { getCoWorkers, getDepartmentUser } from "./apiRequests.js"
+import { modalEditUserDash } from "./createModalDashUser.js"
 
 export const userInfo = async () => {
   const user = JSON.parse(localStorage.getItem("user"))
@@ -29,7 +30,7 @@ export const userInfo = async () => {
   btnEdit.id = "btn-edit-user-dash"
 
   btnEdit.addEventListener("click", async () => {
-
+   await modalEditUserDash(user)
   })
 
   div.appendChild(btnEdit)

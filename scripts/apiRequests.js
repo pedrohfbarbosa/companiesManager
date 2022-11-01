@@ -408,3 +408,23 @@ export const getCoWorkers = async (token) => {
     console.log(err)
   }
 }
+
+export const editUser = async (token, body) => {
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  }
+
+  try {
+    const responseJson = await fetch(`${baseUrl}/users`, options)
+    const response = await responseJson.json()
+
+    return response
+  } catch (err) {
+    console.log(err)
+  }
+}
