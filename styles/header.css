@@ -28,6 +28,7 @@ header {
   z-index: 1;
   padding: 0.5rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);  
+  animation: menuDropDown 1s;
 }
 
 @media (min-width: 900px) {
@@ -42,9 +43,20 @@ header {
     top: 0;
     box-shadow: none;
     justify-content: flex-end;
+    animation: none;
   }  
 
   .btn-default {
     width: 8.875rem;
+  }
+}
+
+@keyframes menuDropDown {
+  0% {
+    margin-top: -6rem;
+  }
+
+  100% {
+    margin-top: 0;
   }
 }
