@@ -1,3 +1,5 @@
+import { toast } from "./toast.js"
+
 const baseUrl = "http://localhost:6278"
 
 export const getSectors = async () => {
@@ -10,7 +12,7 @@ export const getSectors = async () => {
     return response.map(e => e.description)
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -24,7 +26,7 @@ export const getAllCompanies = async () => {
     return response
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -38,7 +40,7 @@ export const getCompaniesBySector = async (sector) => {
     return response
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -59,6 +61,8 @@ export const register = async (body) => {
 
     if (responseJson.ok) {
 
+      toast("success", "Cadastro efetuado com sucesso!")
+
       setTimeout(() => {
 
         window.location.replace("../login/index.html")
@@ -66,16 +70,18 @@ export const register = async (body) => {
       }, 4000);
 
 
-    } else if (response.error[0].includes("email")) {
-      console.log("Email já existe")
     } else {
-      console.log("Algo deu errado, verifique sua conexão com a internet")
+      if (response.error[0].includes("email")) {
+        toast("error", "E-mail já cadastrado")
+      } else {
+        toast("error", "Erro de cadastro! Verifique novamente seus dados")
+      }
     }
 
     return response
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -133,24 +139,42 @@ export const login = async (body) => {
 
     if (responseJson.ok) {
 
+      toast("success", "Login efetuado com sucesso!")
+
       localStorage.setItem("token", response.token)
 
-      if (await validateUser(response.token)) {
-        window.location.replace("../adminDash/index.html")
+      const validation = await validateUser(response.token)
+
+      if (validation) {
+
+        setTimeout(() => {
+
+          window.location.replace("../adminDash/index.html")
+
+        }, 4000);
+
+
       } else {
+
         const userInfo = await getUserInfo(response.token)
         localStorage.setItem("user", JSON.stringify(userInfo))
-        window.location.replace("../userDash/index.html")
+
+        setTimeout(() => {
+
+          window.location.replace("../userDash/index.html")
+
+        }, 4000);
+
       }
 
     } else {
-      console.log("email ou senha inválidos")
+      toast("error", "E-mail ou senha inválidos")
     }
 
     return response
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -248,9 +272,15 @@ export const hireEmployee = async (body, token) => {
     const responseJson = await fetch(`${baseUrl}/departments/hire`, options)
     const response = await responseJson.json()
 
+    if (responseJson.ok) {
+      toast("success", "Usuário contratado com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
+
     return response
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -266,9 +296,15 @@ export const fireEmployee = async (token, id) => {
     const responseJson = await fetch(`${baseUrl}/departments/dismiss/${id}`, options)
     const response = await responseJson.json()
 
+    if (responseJson.ok) {
+      toast("success", "Usuário desligado com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
+
     return response
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -286,10 +322,16 @@ export const createDepartmentRequest = async (token, body) => {
     const responseJson = await fetch(`${baseUrl}/departments`, options)
     const response = await responseJson.json()
 
+    if (responseJson.ok) {
+      toast("success", "Departamento criado com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
+
     return response
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -307,9 +349,15 @@ export const editDepartment = async (token, id, body) => {
     const responseJson = await fetch(`${baseUrl}/departments/${id}`, options)
     const response = await responseJson.json()
 
+    if (responseJson.ok) {
+      toast("success", "Departamento editado com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
+
     return response
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -323,12 +371,15 @@ export const deleteDepartment = async (token, id) => {
 
   try {
     const responseJson = await fetch(`${baseUrl}/departments/${id}`, options)
-    const response = await responseJson.json()
 
-    return response
+    if (responseJson.ok) {
+      toast("success", "Departamento excluído com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
 
   } catch (err) {
-
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -346,9 +397,15 @@ export const editUserAdminDash = async (token, id, body) => {
     const responseJson = await fetch(`${baseUrl}/admin/update_user/${id}`, options)
     const response = await responseJson.json()
 
+    if (responseJson.ok) {
+      toast("success", "Usuário editado com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
+
     return response
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -362,12 +419,15 @@ export const deleteUser = async (token, id) => {
 
   try {
     const responseJson = await fetch(`${baseUrl}/admin/delete_user/${id}`, options)
-    const response = await responseJson.json()
 
-    return response
+    if (responseJson.ok) {
+      toast("success", "Usuário excluído com sucesso!")
+    } else {
+      toast("error", "Verifique sua conexão com a internet e tente novamente")
+    }
 
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }
 
@@ -423,8 +483,18 @@ export const editUser = async (token, body) => {
     const responseJson = await fetch(`${baseUrl}/users`, options)
     const response = await responseJson.json()
 
+    if (responseJson.ok) {
+      toast("success", "Usuário editado com sucesso!")
+    } else {
+      if (response.error.includes("email")) {
+        toast("error", "E-mail já cadastrado")
+      } else {
+        toast("error", "Erro de edição! Verifique novamente seus dados")
+      }
+    }
+
     return response
   } catch (err) {
-    console.log(err)
+    toast("error", "Erro de conexão! Verifique sua conexão com a internet")
   }
 }

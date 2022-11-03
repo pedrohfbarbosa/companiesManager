@@ -1,5 +1,6 @@
 import { editUserAdminDash } from "./apiRequests.js"
 import { renderAllUsers } from "./renderUsersDash.js"
+import { toast } from "./toast.js"
 
 export const modalEditUser = async (user) => {
   const body = document.querySelector("body")
@@ -88,7 +89,7 @@ export const modalEditUser = async (user) => {
 
       await renderAllUsers()
     }else {
-      alert("Selecione pelo menos 1 opção")
+      toast("error", "Selecione pelo menos uma opção")
     }
   })
 

@@ -1,5 +1,6 @@
 import { createDepartmentRequest, getAllCompanies, getAllDepartments, getDepartmentsFromCompany } from "./apiRequests.js"
-import { renderCompaniesSelect, renderDepartments } from "./renderDepartmentsDash.js"
+import { renderDepartments } from "./renderDepartmentsDash.js"
+import { toast } from "./toast.js"
 
 export const modalCreateDepartment = async () => {
   const body = document.querySelector("body")
@@ -91,7 +92,7 @@ export const modalCreateDepartment = async () => {
         await renderDepartments(departments)
       }
     }else {
-      alert("Selecione a empresa")
+      toast("error", "Selecione a empresa")
     }
     
   })

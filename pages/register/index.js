@@ -3,4 +3,4 @@ import { formRegister } from "../../scripts/formRegister.js";
 
 buttonsListener()
 
-formRegister()
+await formRegister()
