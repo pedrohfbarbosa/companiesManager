@@ -1,0 +1,77 @@
+button {
+  cursor: pointer;
+}
+
+button:hover{
+  opacity: 0.8;
+}
+
+.btn-default {
+  width: 100%;
+  max-width: 8.875rem;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--color-brand-100);
+}
+
+.btn-open-header {
+  height: 1rem;
+  width: 1.5rem;
+  border: none;
+  background-color: transparent;
+  background-image: url(../assets/img/openButtons.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-close-header {
+  background-image: url(../assets/img/close.png);
+}
+
+.btn-card-main {
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-view {
+  background-image: url(../assets/img/eye.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-edit {
+  background-image: url(../assets/img/edit.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-delete {
+  background-image: url(../assets/img/delete.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-close-modal {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-image: url(../assets/img/close.png);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.border-none {
+  border: none;
+}

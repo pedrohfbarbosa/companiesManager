@@ -1,0 +1,61 @@
+main {
+  width: 100%;  
+  height: 100%;
+  max-height: 20.75rem;
+  background-color: var(--color-grey-400);  
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);  
+}
+
+.sectors-wrapper-home {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  overflow-x: auto;
+  width: 100%;
+}
+
+aside {
+  display: none;
+}
+
+.img-home {
+  width: 100%;
+  max-width: 34.375rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.img-home img {
+  object-fit: cover;
+}
+
+@media (min-width: 900px) {
+  body {
+    height: 100vh;
+  }
+
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    height: 46.438rem;
+  }
+
+  aside {
+    display: flex;
+  }
+
+  main {
+    max-width: 34.375rem;
+    max-height: 100%;
+  }
+
+  .sectors-wrapper-home {
+    flex-direction: column;
+    height: 90%;
+    overflow-y: auto;
+  }
+
+  .card-home {
+    width: 100%;
+  }
+}

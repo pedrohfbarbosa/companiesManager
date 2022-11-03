@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../styles/globalStyles.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="../../styles/color.css">
+  <link rel="stylesheet" href="../../styles/fonts.css">
+  <link rel="stylesheet" href="../../styles/logo.css">
+  <link rel="stylesheet" href="../../styles/header.css">
+  <link rel="stylesheet" href="../../styles/inputs.css">
+  <link rel="stylesheet" href="../../styles/cardHome.css">
+  <link rel="stylesheet" href="../../styles/toast.css">
+  <link rel="stylesheet" href="./index.css">
+  <title>Login</title>
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <div class="rounded-logo">
+        </div>
+        <h2>
+          Kenzie Empresas
+        </h2>
+      </div>
+
+      <div class="btns-header hidden">
+        <button class="btn-default bg-color-white text-2 color-brand-100 go-to-home">
+          Home
+        </button>          
+        <button class="btn-default bg-color-brand-100 text-2 color-white go-to-register">
+          Cadastro
+        </button> 
+      </div>
+
+      <button id="btn-open-header" class="btn-open-header">
+      </button>
+
+    </div>
+  </header>
+  <div class="main-content">
+
+    <main>
+      <h2 class="title-1">
+        Login
+      </h2>
+      <form id="form-login">        
+        <input class="input-form" type="email" placeholder="Seu email" name="email" id="email" required="true">
+        <input class="input-form" type="password" placeholder="Sua senha" name="password" id="password" required="true">
+        <button id="btn-login" class="btn-default bg-color-brand-100 text-2 color-white" type="submit">Login</button>
+      </form>
+      <span>ou</span>
+      <button class="go-to-home btn-default bg-color-white text-2 color-brand-100">Retornar</button>
+    </main>
+
+  </div>
+
+  
+  <script type="module" src="./index.js"></script>
+</body>
+</html>

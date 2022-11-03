@@ -1,0 +1,36 @@
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  height: 6rem;
+  width: 100%;
+  max-width: 17rem;
+  padding: 1rem;
+  border-radius: var(--radius-2);
+  text-align: center;
+
+  animation: toast 4s;
+}
+
+@keyframes toast {
+  0% {
+    margin-bottom: -10rem;
+  }
+
+  25% {
+    margin-bottom: 0;
+  }
+
+  50% {
+    margin-bottom: 0;
+  }
+
+  75% {
+    margin-bottom: 0;
+  }
+
+  100% {
+    margin-bottom: -10rem;
+  }
+
+}

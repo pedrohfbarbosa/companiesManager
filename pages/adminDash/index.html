@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../styles/globalStyles.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="../../styles/color.css">
+  <link rel="stylesheet" href="../../styles/fonts.css">
+  <link rel="stylesheet" href="../../styles/logo.css">
+  <link rel="stylesheet" href="../../styles/headerDash.css">
+  <link rel="stylesheet" href="../../styles/inputs.css">
+  <link rel="stylesheet" href="../../styles/cardDash.css">
+  <link rel="stylesheet" href="../../styles/modal.css">
+  <link rel="stylesheet" href="../../styles/toast.css">
+  <link rel="stylesheet" href="./index.css">
+  <title>Dashboard-Admin</title>
+</head>
+
+<body>
+  <header>
+
+    <div class="container header-content">
+
+      <div class="logo">
+        <div class="rounded-logo">
+        </div>
+        <h2>
+          Kenzie Empresas
+        </h2>
+      </div>
+
+      <button class="btn-default bg-color-white text-2 color-brand-100 btn-logout">
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="section-departments">
+      <div class="section-header">
+        <h2 class="title-dash">
+          Departamentos
+        </h2>
+
+        <form id="form-companies">
+          <select name="companies" id="select-companies" form="form-companies"
+            class="select-companies text-1 color-black">
+            <option value="">Selecionar empresa</option>
+          </select>
+        </form>
+
+        <button id="btn-create-department" class="btn-default bg-color-brand-100 color-white text-2">
+          + Criar
+        </button>
+      </div>
+
+      <ul class="departments-wrapper">
+      </ul>
+    </section>
+
+    <section class="section-users">
+      <h2 class="title-dash">
+        Usuários cadastrados
+      </h2>
+
+      <ul class="users-wrapper">
+      </ul>
+    </section>
+
+  </main> 
+
+  <script type="module" src="./index.js"></script>
+</body>
+
+</html>
