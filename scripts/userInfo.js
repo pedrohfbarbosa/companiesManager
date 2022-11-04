@@ -86,7 +86,7 @@ export const companyInfo = async () => {
         ${e.username}
       </h4>
       <p class="text-4">
-        ${e.professional_level}
+        ${e.professional_level || ""}
       </p>
       `
 
