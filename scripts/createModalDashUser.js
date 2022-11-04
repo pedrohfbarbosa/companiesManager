@@ -1,4 +1,5 @@
 import { editUser, getUserInfo } from "./apiRequests.js"
+import { toast } from "./toast.js"
 import { userInfo } from "./userInfo.js"
 
 export const modalEditUserDash = async (user) => {
@@ -72,7 +73,7 @@ export const modalEditUserDash = async (user) => {
       
       await userInfo()
     }else {
-      alert("Altere pelo menos 1 item")
+      toast("error", "Altere pelo menos 1 item")
     }
     
   })
